@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="cam">
+    <xacro:property name="pi" value="3.14159"/>
+    <xacro:macro name="box_inertia" params="m w h d">
+        <inertial>
+            <mass value="${m}"/>
+            <inertia ixx="${m / 12.0 * (d*d + h*h)}" ixy="0.0" ixz="0.0" iyy="${m / 12.0 * (w*w + h*h)}" iyz="0.0" izz="${m / 12.0 * (w*w + d*d)}"/>
+        </inertial>
+    </xacro:macro>
+    <link name="world" />
+    
+    
+    <xacro:macro name="box" params="n x y tx tz col">
+    <link name="box_${n}">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${tx} 0.5 ${tz}"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${tx} 0.5 ${tz}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="100" w="${tx}" h="0.5" d="${tz}"/>
+    </link>
+
+    <gazebo reference="box_${n}">
+        <material>Gazebo/${col}</material>
+    </gazebo>
+
+    <joint name="box_${n}_to_world" type="fixed">
+        <origin xyz="${x} ${y} ${tz/2+0.0005}" rpy="0 0 0"/>
+        <child link="box_${n}"/>
+        <parent link="world"/>
+    </joint>
+    </xacro:macro>
+    
+        
+    <link name="plane">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="20 20 0.005"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="20 20 0.0005"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="1000" w="20" h="20" d="0.005"/>
+    </link>
+
+    <link name="camera">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.005 0.005 0.005"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.005 0.005 0.005"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="0.0001" w="0.005" h="0.005" d="0.005"/>
+    </link>
+
+    <joint name="cam_to_world" type="fixed">
+        <origin xyz="0 0 12" rpy="0 ${pi/2} ${pi}"/>
+        <child link="camera"/>
+        <parent link="world"/>
+    </joint>
+
+    <gazebo reference="plane">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <joint name="plane_to_world" type="fixed">
+        <origin xyz="0 0 0.0005" rpy="0 0 0"/>
+        <child link="plane"/>
+        <parent link="world"/>
+    </joint>
+
+    <joint name="camera2_optical_joint" type="fixed">
+        <parent link="camera"/>
+        <child link="camera_link_optical2"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <link name="camera_link_optical2"></link>
+
+    <gazebo reference="camera">
+        <sensor type="camera" name="camera3">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>false</visualize>
+            <update_rate>30.0</update_rate>
+            <camera name="camera3">
+                <horizontal_fov>1.3962634</horizontal_fov>
+                <image>
+                    <width>800</width>
+                    <height>800</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <cameraName>camera3</cameraName>
+                <imageTopicName>ovh/image_raw</imageTopicName>
+                <cameraInfoTopicName>ovh/camera_info</cameraInfoTopicName>
+                <frameName>camera_link_optical2</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <xacro:macro name="row" params="m s x n1" >
+        <xacro:box n="1_${n1}" x="${x}" y="${m-7}" tx="0.5" tz="0.3" col="White"/>
+        <xacro:box n="2_${n1}" x="${x}" y="${s*1-7+m}" tx="0.5" tz="0.3" col="White" />
+        <xacro:box n="3_${n1}" x="${x}" y="${s*2-7+m}" tx="0.5" tz="0.3" col="White"/>
+        <xacro:box n="4_${n1}" x="${x}" y="${s*3-7+m}" tx="0.5" tz="0.3" col="White"/>
+        <xacro:box n="5_${n1}" x="${x}" y="${s*4-7+m}" tx="0.5" tz="0.3" col="White"/>
+    </xacro:macro>
+
+    <xacro:macro name="row_path" params="m s x n1 col" >
+        <xacro:box n="10_${n1}" x="${x}" y="${m-7}" tx="0.05" tz="0.005" col="${col}"/>
+        <xacro:box n="20_${n1}" x="${x}" y="${s*1-7+m}" tx="0.08" tz="0.005" col="${col}"/>
+        <xacro:box n="30_${n1}" x="${x}" y="${s*2-7+m}" tx="0.08" tz="0.005" col="${col}" />
+        <xacro:box n="40_${n1}" x="${x}" y="${s*3-7+m}" tx="0.08" tz="0.005" col="${col}"/>
+        <xacro:box n="50_${n1}" x="${x}" y="${s*4-7+m}" tx="0.08" tz="0.005" col="${col}"/>
+        <xacro:box n="60_${n1}" x="${x}" y="${s*5-7+m}" tx="0.08" tz="0.005" col="${col}"/>
+        <xacro:box n="70_${n1}" x="${x}" y="${s*6-7+m}" tx="0.08" tz="0.005" col="${col}"/>
+        <xacro:box n="80_${n1}" x="${x}" y="${s*7-7+m}" tx="0.08" tz="0.005" col="${col}"/>
+    </xacro:macro>
+
+    <xacro:row m="0" s="3" x="-3" n1="1"/>
+    <xacro:row m="1" s="3" x="0" n1="2"/>
+    <xacro:row m="0" s="3" x="3" n1="3"/>
+
+    <xacro:row_path m="0" s="2" x="-8" n1="1" col="Blue"/>
+    <xacro:row_path m="0" s="2" x="-5" n1="2" col="Blue"/>
+    <xacro:row_path m="0" s="2" x="-6.5" n1="3" col="Grey"/>
+    <xacro:box n="112" x="-6.5" y="8" tx="3" tz="1" col="Grey" />
+</robot>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA version="1.4.0" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+	<asset>
+		<contributor>
+			<author> SimLab Soft http://www.simLab-soft.com </author>
+			<authoring_tool>SimLab Collada Exporter for Fusion 360</authoring_tool>
+		</contributor>
+		<created>2023-04-04T00:09:02</created>
+		<modified>2023-04-04T00:09:02</modified>
+		<unit meter="1.000000000000000" name="Meter"/>
+		<up_axis>Z_UP</up_axis>
+	</asset>
+	<library_visual_scenes>
+		<visual_scene id="Scene" name="Scene">
+			<node>
+				<matrix> 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 </matrix>
+				<node  id="ID0" name="Camera-2">
+					<matrix> 1 0 0 0.000274925 0 0 -1 -0.88569 0 1 0 0.00125 0 0 0 1 </matrix>
+					<instance_camera url="#ID1" />
+				</node>
+				<node  id="ID2" name="aruco_marker_v8">
+					<matrix> 0.01 0 0 0 0 0 -0.01 0 0 0.01 0 0 0 0 0 1 </matrix>
+					<node  id="ID3" name="Body2">
+						<matrix> 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 </matrix>
+						<instance_geometry url="#ID4">
+							<bind_material>
+								<technique_common>
+									<instance_material symbol="Plastic_-_Glossy_(Grey)_(1)" target="#ID5">
+										<bind_vertex_input semantic="UVSET0" input_semantic="TEXCOORD" input_set="0" />
+									</instance_material>
+								</technique_common>
+							</bind_material>
+						</instance_geometry>
+					</node>
+				</node>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<library_cameras>
+		<camera id="ID1" name="Camera-2">
+			<optics>
+				<technique_common>
+					<perspective>
+						<yfov>45</yfov>
+						<aspect_ratio>1.33333</aspect_ratio>
+						<znear>0.0100783</znear>
+						<zfar>100.783</zfar>
+					</perspective>
+				</technique_common>
+			</optics>
+			<extra>
+				<technique  >
+					<camera_target type="float">0.000274925 -0.000282712 0.00125</camera_target>
+				</technique>
+			</extra>
+		</camera >
+	</library_cameras>
+	<library_geometries>
+		<geometry id="ID4" name="geo_0">
+			<mesh>
+				<source id="geo_0-Position">
+					<float_array count="324" id="geo_0-Position-array">11.0517 0 -0.000199213 11.0517 0 -11.0002 11.0517 0.25 -0.000199213 11.0517 0.25 -11.0002 5.54052 0 -0.000199213 11.0517 0 -0.000199213 5.54052 0.25 -0.000199213 11.0517 0.25 -0.000199213 5.54052 0 -5.53463 5.54052 0 -0.000199213 5.54052 0.25 -5.53463 5.54052 0.25 -0.000199213 -1.14761e-05 0 -5.53463 5.54052 0 -5.53463 -1.14761e-05 0.25 -5.53463 5.54052 0.25 -5.53463 -1.14761e-05 0 -0.000199213 -1.14761e-05 0 -5.53463 -1.14761e-05 0.25 -0.000199213 -1.14761e-05 0.25 -5.53463 -11.0401 0 -0.000199213 -1.14761e-05 0 -0.000199213 -11.0401 0.25 -0.000199213 -1.14761e-05 0.25 -0.000199213 -11.0401 0 -5.51677 -11.0401 0 -0.000199213 -11.0401 0.25 -5.51677 -11.0401 0.25 -0.000199213 -5.51379 0 -5.51677 -11.0401 0 -5.51677 -5.51379 0.25 -5.51677 -11.0401 0.25 -5.51677 -5.51379 0 -11.0002 -5.51379 0 -5.51677 -5.51379 0.25 -11.0002 -5.51379 0.25 -5.51677 11.0517 0 -11.0002 -5.51379 0 -11.0002 11.0517 0.25 -11.0002 -5.51379 0.25 -11.0002 -5.51379 0.25 -11.0002 -1.14761e-05 0.25 -5.53463 11.0517 0.25 -11.0002 5.54052 0.25 -5.53463 11.0517 0.25 -0.000199213 5.54052 0.25 -0.000199213 -5.51379 0.25 -5.51677 -1.14761e-05 0.25 -0.000199213 -11.0401 0.25 -0.000199213 -11.0401 0.25 -5.51677 -5.51379 0 -5.51677 -5.51379 0 -11.0002 -1.14761e-05 0 -5.53463 11.0517 0 -11.0002 5.54052 0 -5.53463 11.0517 0 -0.000199213 5.54052 0 -0.000199213 -1.14761e-05 0 -0.000199213 -11.0401 0 -0.000199213 -11.0401 0 -5.51677 -1.14761e-05 0 -0.000199213 -1.14761e-05 0 5.52075 -1.14761e-05 0.25 -0.000199213 -1.14761e-05 0.25 5.52075 5.54052 0 -0.000199213 -1.14761e-05 0 -0.000199213 5.54052 0.25 -0.000199213 -1.14761e-05 0.25 -0.000199213 5.54052 0 5.52075 5.54052 0 -0.000199213 5.54052 0.25 5.52075 5.54052 0.25 -0.000199213 -1.14761e-05 0 5.52075 5.54052 0 5.52075 -1.14761e-05 0.25 5.52075 5.54052 0.25 5.52075 5.54052 0.25 5.52075 5.54052 0.25 -0.000199213 -1.14761e-05 0.25 5.52075 -1.14761e-05 0.25 -0.000199213 5.54052 0 5.52075 -1.14761e-05 0 5.52075 5.54052 0 -0.000199213 -1.14761e-05 0 -0.000199213 5.54052 0 5.52075 5.54052 0 11.0567 5.54052 0.25 5.52075 5.54052 0.25 11.0567 11.0951 0 5.52075 5.54052 0 5.52075 11.0951 0.25 5.52075 5.54052 0.25 5.52075 11.0951 0 11.0567 11.0951 0 5.52075 11.0951 0.25 11.0567 11.0951 0.25 5.52075 5.54052 0 11.0567 11.0951 0 11.0567 5.54052 0.25 11.0567 11.0951 0.25 11.0567 11.0951 0.25 11.0567 11.0951 0.25 5.52075 5.54052 0.25 11.0567 5.54052 0.25 5.52075 11.0951 0 11.0567 5.54052 0 11.0567 11.0951 0 5.52075 5.54052 0 5.52075 </float_array>
+					<technique_common>
+						<accessor count="108" source="#geo_0-Position-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geo_0-Normals">
+					<float_array count="324" id="geo_0-Normals-array">1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 </float_array>
+					<technique_common>
+						<accessor count="108" source="#geo_0-Normals-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geo_0-Vertex">
+					<input semantic="POSITION" source="#geo_0-Position"/>
+				</vertices>
+				<triangles count="60" material="Plastic_-_Glossy_(Grey)_(1)">
+					<input offset="0" semantic="VERTEX" source="#geo_0-Vertex"/>
+					<input offset="1" semantic="NORMAL"  source="#geo_0-Normals"/>
+					<p>0 0 1 1 2 2 2 2 1 1 3 3 4 4 5 5 6 6 6 6 5 5 7 7 8 8 9 9 10 10 10 10 9 9 11 11 12 12 13 13 14 14 14 14 13 13 15 15 16 16 17 17 18 18 18 18 17 17 19 19 20 20 21 21 22 22 22 22 21 21 23 23 24 24 25 25 26 26 26 26 25 25 27 27 28 28 29 29 30 30 30 30 29 29 31 31 32 32 33 33 34 34 34 34 33 33 35 35 36 36 37 37 38 38 38 38 37 37 39 39 40 40 41 41 42 42 42 42 41 41 43 43 42 42 43 43 44 44 44 44 43 43 45 45 40 40 46 46 41 41 41 41 46 46 47 47 47 47 46 46 48 48 48 48 46 46 49 49 50 50 51 51 52 52 52 52 51 51 53 53 52 52 53 53 54 54 54 54 53 53 55 55 54 54 55 55 56 56 52 52 57 57 50 50 50 50 57 57 58 58 50 50 58 58 59 59 60 60 61 61 62 62 62 62 61 61 63 63 64 64 65 65 66 66 66 66 65 65 67 67 68 68 69 69 70 70 70 70 69 69 71 71 72 72 73 73 74 74 74 74 73 73 75 75 76 76 77 77 78 78 78 78 77 77 79 79 80 80 81 81 82 82 82 82 81 81 83 83 84 84 85 85 86 86 86 86 85 85 87 87 88 88 89 89 90 90 90 90 89 89 91 91 92 92 93 93 94 94 94 94 93 93 95 95 96 96 97 97 98 98 98 98 97 97 99 99 100 100 101 101 102 102 102 102 101 101 103 103 104 104 105 105 106 106 106 106 105 105 107 107 </p>
+				</triangles>
+			</mesh>
+		</geometry>
+	</library_geometries>
+	<library_materials>
+		<material id="ID5" name="Plastic_-_Glossy_(Grey)_(1)">
+			<instance_effect url="#ID6"/>
+		</material>
+	</library_materials>
+	<library_effects>
+		<effect id="ID6">
+			<profile_COMMON>
+				<technique sid="standard">
+					<phong>
+						<emission><color>1 1 1 1</color></emission>
+						<ambient><color>1 1 1 1</color></ambient>
+						<diffuse>
+							<color>0 0 0 1</color>
+						</diffuse>
+						<specular><color>0 0 0 1</color></specular>
+						<transparent opaque="A_ONE"><color>1.0 1.0 1.0 1.0</color></transparent>
+						<transparency><float>1</float></transparency>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+	</library_effects>
+	<scene>
+		<instance_visual_scene url="#Scene"/>
+	</scene>
+</COLLADA>

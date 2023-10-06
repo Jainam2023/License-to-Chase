@@ -1,0 +1,16 @@
+<launch>
+  
+  <include file="$(find test3)/launch/pbot.launch" />
+  
+  <include file="$(find test3)/launch/tbot.launch" /> 
+  
+  <node name="path_planning" pkg="test3" type="path_planning.py" />
+
+  <node name="thief" pkg="test3" type="thief_motion.py" />
+  
+  <node name="controller" pkg="test3" type="goal.py" /> 
+
+  <node name="thief_stop" pkg="test3" type="stop.py" />
+
+  
+</launch>

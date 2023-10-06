@@ -1,0 +1,1 @@
+/home/jainam/project_ws/devel/.private/chase/lib/pkgconfig/chase.pc

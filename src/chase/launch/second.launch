@@ -1,0 +1,5 @@
+<launch>
+
+  <node name="obstacle_detection" pkg="test3" type="obstacle_image_read.py" />
+  
+</launch>

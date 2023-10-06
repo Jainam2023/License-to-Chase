@@ -1,0 +1,14 @@
+<launch>
+
+    <group ns="tbot">
+    
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(find test3)/urdf/tbot.xacro"/>
+
+        <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-x -6 -y -7 -z 0 -Y 0 -urdf -param robot_description -model Robot2" output="screen"/>
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+    </group>
+</launch>
